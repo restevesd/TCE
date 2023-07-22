@@ -6,7 +6,7 @@ from agent import Agent
 
 st.set_page_config(page_title="IA para analizar documentos")
 apikey = st.secrets["apikey"]
-st.session_state["agent"] = Agent(st.secrets["apikey"])
+st.session_state["agent"] = Agent()
 
 def display_messages():
     st.subheader("Chat")
@@ -49,9 +49,9 @@ def main():
         st.session_state["messages"] = []
         st.session_state["OPENAI_API_KEY"] = apikey
         if is_openai_api_key_set():
-            st.session_state["agent"] = Agent(st.secrets["apikey"])
+            st.session_state["agent"] = Agent()
         else:
-            st.session_state["agent"] = Agent(st.secrets["apikey"])
+            st.session_state["agent"] = Agent()
 
     st.header("IA para analizar documentos")
 
@@ -65,7 +65,7 @@ def main():
                 st.warning("Please, upload the files again.")
             st.session_state["messages"] = []
             st.session_state["user_input"] = ""
-            st.session_state["agent"] = Agent(st.session_state["OPENAI_API_KEY"])
+            st.session_state["agent"] = Agent()
 
     st.subheader("Subir PDF")
     st.file_uploader(
