@@ -8,6 +8,9 @@ st.set_page_config(page_title="IA para analizar documentos")
 apikey = st.secrets["apikey"]
 st.session_state["agent"] = Agent()
 
+st.session_state["OPENAI_API_KEY"] = apikey
+
+
 def display_messages():
     st.subheader("Chat")
     for i, (msg, is_user) in enumerate(st.session_state["messages"]):
