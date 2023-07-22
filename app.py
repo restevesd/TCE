@@ -5,7 +5,7 @@ from streamlit_chat import message
 from agent import Agent
 
 st.set_page_config(page_title="IA para analizar documentos")
-apikey = "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"
+apikey = st.secrets["apikey"]
 
 
 def display_messages():
