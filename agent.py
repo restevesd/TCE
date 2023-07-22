@@ -9,15 +9,16 @@ from langchain.llms import OpenAI
 
 import streamlit as st
 
-
+openai_api_key = st.secrets["apikey"]
+ 
 class Agent:
-    def __init__(self, openai_api_key: str | None = None) -> None:
+    def __init__(self):
         # if openai_api_key is None, then it will look the enviroment variable OPENAI_API_KEY
         openai_api_key = st.secrets["apikey"]
         self.embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
         self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 
-        self.llm = OpenAI(temperature=0, openai_api_key=st.secrets["apikey"])
+        self.llm = OpenAI(temperature=0, openai_api_key=openai_api_key)
 
         self.chat_history = None
         self.chain = None
