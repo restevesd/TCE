@@ -49,7 +49,7 @@ def main():
         st.session_state["messages"] = []
         st.session_state["OPENAI_API_KEY"] = apikey
         if is_openai_api_key_set():
-            st.session_state["agent"] = Agent(st.session_state["OPENAI_API_KEY"])
+            st.session_state["agent"] = Agent(st.secrets["apikey"])
         else:
             st.session_state["agent"] = None
 
