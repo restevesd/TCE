@@ -6,7 +6,7 @@ from agent import Agent
 
 st.set_page_config(page_title="IA para analizar documentos")
 apikey = st.secrets["apikey"]
-
+st.session_state["agent"] = Agent(st.secrets["apikey"])
 
 def display_messages():
     st.subheader("Chat")
@@ -51,7 +51,7 @@ def main():
         if is_openai_api_key_set():
             st.session_state["agent"] = Agent(st.secrets["apikey"])
         else:
-            st.session_state["agent"] = None
+            st.session_state["agent"] = Agent(st.secrets["apikey"])
 
     st.header("IA para analizar documentos")
 
